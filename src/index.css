@@ -1,13 +1,97 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body, html {
+  height: 100%;
+}
+
+body {
+  margin: 0; 
+  background-image:    url(./bg.jpg);
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;              /* optional, center the image */
+}
+
+#root {
+  height: 100%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+nav li {
+  width: 100%
+}
+
+nav li a {
+  display: block;
+  text-align: center;
+  padding: 20px 0px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color, 0.5s;
+}
+
+nav li a:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  max-width:600px;
+  height: 50%;
+}
+
+.timer h1 {
+  position: relative;
+  margin: 0 auto;
+  bottom: 40px;
+  text-align: center;
+  font-size: 7em;
+}
+
+.buttons ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.buttons li {
+  width: 100%;
+}
+
+.buttons button {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  text-align: center;
+  font-size: 24px;
+  padding: 24px;
+  cursor: pointer;
+  transition: background-color, 0.5s;
+}
+
+.buttons button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
