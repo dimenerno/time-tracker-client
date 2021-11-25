@@ -1,11 +1,11 @@
 import React from 'react'
-import { useState } from 'react';
 
 const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, onChange, onSubmit, category }) => {
 
    var setOfButtons;
 
    switch (timerState) {
+      default:
       case 0:
          setOfButtons = (
             <ul>
