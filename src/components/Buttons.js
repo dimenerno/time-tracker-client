@@ -29,11 +29,11 @@ const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, o
       case 3:
          setOfButtons = (
             <form onSubmit={onSubmit}>
-               <label>
-                  Name:
-                  <input type="text" value={category} onChange={onChange} />
-               </label>
-               <input type="submit" value="Submit" />
+               
+               <input type="text" placeholder="Which category?" value={category} onChange={onChange} />
+               <div className="submit-input">
+                  <input type="submit" value="Submit" />
+               </div>
             </form>)
          break;
    }
