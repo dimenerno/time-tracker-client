@@ -42,17 +42,36 @@ const Track = () => {
 
     function submitTime() {
         setTimerState(3)
+        setCategory("")
     }
 
     function onChange(event) {
         setCategory(event.target.value)
      }
   
-     function onSubmit() {
-        alert(`Submitted: ${category}`)
+    function onSubmit() {
+        const today = new Date();
+        const date = {
+            year: today.getFullYear(),
+            month: today.getMonth()+1,
+            day: today.getDate()
+        }
+
+        fetch(`http://localhost:9000`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                category: category,
+                duration: time,
+                date: date
+            })
+        }).then(res => {
+            if(res.ok) alert("Succeded!")
+            else alert("Error!")
+        })
         setTime(0)
         setTimerState(0)
-     }
+    }
 
     useEffect(() => {
         let interval;

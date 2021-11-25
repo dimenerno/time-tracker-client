@@ -10,9 +10,9 @@ body, html {
 body {
   margin: 0; 
   background-image:    url(./bg.jpg);
-  background-size:     cover;                      /* <------ */
+  background-size:     cover;
   background-repeat:   no-repeat;
-  background-position: center center;              /* optional, center the image */
+  background-position: center center;
 }
 
 #root {
@@ -107,7 +107,6 @@ input {
   padding: 16px 8px;
   font-size: 22px;
   text-align: center;
-  color: white;
 }
 
 input:focus::placeholder {
