@@ -8,10 +8,11 @@ const Track = () => {
     const [minutes, setMinutes] = useState('00')
     const [hours, setHours] = useState('00')
     const [isActive, setIsActive] = useState(false)
-
+    const [category, setCategory] = useState("")
     // 0: Initial
     // 1: Running
     // 2: Paused
+    // 3: Ready for submission
     const [timerState, setTimerState] = useState(0)
 
     function updateTimer(t) {
@@ -25,24 +26,33 @@ const Track = () => {
     }
 
     function startTimer() {
-        setIsActive(true);
+        setIsActive(true)
         setTimerState(1)
     }
 
-    function resetTimer() {
-        setIsActive(false);
-        setTime(0);
-        setTimerState(0)
-    }
-
     function pauseTimer() {
-        setIsActive(false);
+        setIsActive(false)
         setTimerState(2)
     }
 
-    function submitTime() {
-        console.log("On development!")
+    function resetTimer() {
+        setTime(0)
+        setTimerState(0)
     }
+
+    function submitTime() {
+        setTimerState(3)
+    }
+
+    function onChange(event) {
+        setCategory(event.target.value)
+     }
+  
+     function onSubmit() {
+        alert(`Submitted: ${category}`)
+        setTime(0)
+        setTimerState(0)
+     }
 
     useEffect(() => {
         let interval;
@@ -63,7 +73,7 @@ const Track = () => {
                 <div className='time'>
                     <h1>{hours}:{minutes}:{seconds}</h1>
                 </div>
-                <Buttons timerState={timerState} startTimer={startTimer} resetTimer={resetTimer} pauseTimer={pauseTimer} submitTime={submitTime}/>
+                <Buttons timerState={timerState} startTimer={startTimer} resetTimer={resetTimer} pauseTimer={pauseTimer} submitTime={submitTime} onChange={onChange} onSubmit={onSubmit} category={category}/>
             </div>
         </div>
 
