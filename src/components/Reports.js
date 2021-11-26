@@ -3,27 +3,40 @@ import { useState, useEffect } from 'react'
 
 const Reports = () => {
 
-    const [html, setHtml] = useState([])
+    const [list_of_category, set_list_of_category] = useState([])
+    const [list_of_duration, set_list_of_duration] = useState([])
 
-    useEffect( () => {
+    useEffect(() => {
         fetch('http://localhost:9000')
             .then(res => res.json())
             .then(data => {
                 const arr = data.record_arr
                 const len = arr.length
-                const buffer = []
-                for(let i = 0; i < len; i++) {
-                    buffer.push((<li key={i}>You spent {arr[i].duration} on {arr[i].category}.</li>))
+                var category_buffer = [(<th>Category</th>)]
+                var duration_buffer = [(<th>Duration</th>)]
+                for (let i = 0; i < len; i++) {
+                    category_buffer.push((<td key={i}>{arr[i].category}</td>))
+                    duration_buffer.push((<td key={i}>{arr[i].duration}</td>))
                 }
-                setHtml(buffer)
+                set_list_of_category(category_buffer)
+                set_list_of_duration(duration_buffer)
             })
     }, [])
 
     return (
-        <div className="reports">
-            <ul>
-                {html}
-            </ul>
+        <div className="wrapper">
+            <div className="reports">
+                <table>
+                    <tbody>
+                        <tr>
+                            {list_of_category}
+                        </tr>
+                        <tr>
+                            {list_of_duration}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

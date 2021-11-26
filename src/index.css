@@ -69,12 +69,15 @@ nav li a:hover {
   font-size: 6em;
 }
 
-.buttons ul {
-  display: flex;
-  justify-content: space-around;
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.buttons ul {
+  display: flex;
+  justify-content: space-around;
 }
 
 .buttons li {
@@ -130,4 +133,34 @@ input:focus {
 
 .submit-input input:hover {
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.reports {
+  display: flex;
+  justify-content: space-around;
+  max-width: 600px;
+  margin: auto;
+  padding: 0px 100px 0px 100px;
+}
+
+table {
+  position: relative;
+  table-layout: fixed;
+  width: 100%;
+  bottom: 50px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+tr {
+  display: table-cell;
+}
+
+th, td {
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: left;
+  font-size: larger;
+  padding: 15px 0px 15px 10px;
+  background-color: rgba(0, 0, 0, 0.2);
 }
