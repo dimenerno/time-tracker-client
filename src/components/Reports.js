@@ -13,24 +13,21 @@ const Reports = () => {
         datasets: []
     })
 
-    
-
     useEffect(() => {
         fetch('http://localhost:9000')
             .then(res => res.json())
             .then(data => {
-                const report = data.report
                 var category_buffer = [(<th>Category</th>)]
                 var duration_buffer = [(<th>Duration</th>)]
                 var labels = []
                 var dataset = []
 
-                for(var key in report) {
+                for (var key in data) {
                     labels.push(key)
-                    dataset.push(report[key])
+                    dataset.push(data[key])
                     category_buffer.push((<td key={key}>{key}</td>))
 
-                    const formatted_time = formatTime(report[key])
+                    const formatted_time = formatTime(data[key])
                     duration_buffer.push((<td key={key}>{formatted_time.hours}:{formatted_time.minutes}:{formatted_time.seconds}</td>))
                 }
 
@@ -38,20 +35,21 @@ const Reports = () => {
                     labels: labels,
                     datasets: [
                         {
-                          label: 'Time spent at each category',
-                          data: dataset,
-                          backgroundColor: [
-                            '#AC92EB',
-                            '#4FC1E8',
-                            '#A0D568',
-                            '#FFCE54',
-                            '#ED5564'
-                          ],
-                          borderWidth: 0,
+                            label: 'Time spent at each category',
+                            data: dataset,
+                            backgroundColor: [
+                                '#082d0f',
+                                '#5e807f',
+                                '#17B890',
+                                '#9DC5BB',
+                                '#DEE5E5'
+                            ],
+                            borderWidth: 0.5,
+                            borderColor: 'rgba(0, 0, 0, 0.5'
                         }
                     ]
                 })
-                
+
                 set_list_of_category(category_buffer)
                 set_list_of_duration(duration_buffer)
             })
@@ -61,24 +59,14 @@ const Reports = () => {
         <div className="wrapper">
             <div className="reports">
                 <div className="chart">
-                    <Doughnut data={chartData} options={{
-                        tooltips: {
-                            enabled: true
-                        }
-                    }}/>
+                    <Doughnut data={chartData} />
                 </div>
-                <div>
-                    <table>
-                        <tbody>
-                            <tr>
-                                {list_of_category}
-                            </tr>
-                            <tr>
-                                {list_of_duration}
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table>
+                    <tbody>
+                        <tr>{list_of_category}</tr>
+                        <tr>{list_of_duration}</tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     )
