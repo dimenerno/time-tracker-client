@@ -1,11 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import formatTime from '../helper/formatTime'
-import { Chart, ArcElement } from 'chart.js'
+import { Chart, ArcElement, Tooltip } from 'chart.js'
 import { Doughnut } from "react-chartjs-2";
 
 const Reports = () => {
-    Chart.register(ArcElement);
+    Chart.register([ArcElement, Tooltip]);
     const [list_of_category, set_list_of_category] = useState([])
     const [list_of_duration, set_list_of_duration] = useState([])
     const [chartData, setchartData] = useState({
@@ -62,6 +62,9 @@ const Reports = () => {
             <div className="reports">
                 <div className="chart">
                     <Doughnut data={chartData} options={{
+                        tooltips: {
+                            enabled: true
+                        }
                     }}/>
                 </div>
                 <div>
