@@ -1,11 +1,12 @@
 import React from 'react'
+import { useState } from 'react';
 
-const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, onChange, onSubmit, category }) => {
+const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, setCategory, onSubmit, category }) => {
 
    var setOfButtons;
 
-   function openDropdown() {
-
+   const buttonSelected = key => e => {
+      setCategory(key)
    }
 
    switch (timerState) {
@@ -36,11 +37,9 @@ const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, o
                <div className='select-category'>
                   <h3>Select a category</h3>
                   <div className='list-of-categories'>
-                     <button>Study</button>
-                     <button>Read</button>
-                     <button>Work</button>
-                     <button>Exercise</button>
-                     <button>Leisure</button>
+                     {['Study', 'Read', 'Work', 'Exercise', 'Leisure'].map(key =>
+                        <button className={key === category ? 'selected' : ''} onClick={buttonSelected(key)}>{key}</button>
+                     )}
                   </div>
                   <button onClick={onSubmit} className='submitbtn'>
                      Submit

@@ -176,3 +176,7 @@ th, td {
   font-size: 18px;
   text-align: center;
 }
+
+button.selected {
+  background-color: rgba(0, 0, 0, 0.6);
+}

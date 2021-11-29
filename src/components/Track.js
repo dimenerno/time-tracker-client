@@ -45,10 +45,6 @@ const Track = () => {
         setTimerState(3)
         setCategory("")
     }
-
-    function onChange(event) {
-        setCategory(event.target.value)
-     }
   
     function onSubmit() {
         const today = new Date();
@@ -88,7 +84,7 @@ const Track = () => {
     }, [isActive, time]);
 
 
-    if(timerState != 3) 
+    if(timerState !== 3) 
         timerHTML = (                
         <div className='time'>
             <h1>{hours}:{minutes}:{seconds}</h1>
@@ -98,7 +94,7 @@ const Track = () => {
         <div className='wrapper'>
             <div className='timer'>
                 {timerHTML}
-                <Buttons timerState={timerState} startTimer={startTimer} resetTimer={resetTimer} pauseTimer={pauseTimer} submitTime={submitTime} onChange={onChange} onSubmit={onSubmit} category={category}/>
+                <Buttons timerState={timerState} startTimer={startTimer} resetTimer={resetTimer} pauseTimer={pauseTimer} submitTime={submitTime} setCategory={setCategory} onSubmit={onSubmit} category={category}/>
             </div>
         </div>
 
