@@ -15,9 +15,18 @@ body {
   background-position: center center;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
 #root {
   height: 100%;
 }
+
+/* Navigation bar */
 
 nav ul {
   display: flex;
@@ -45,12 +54,16 @@ nav li a:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+/* wrapper is used to align a single div element vertically */
+
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
 }
+
+/* timer */
 
 .timer {
   display: flex;
@@ -69,11 +82,7 @@ nav li a:hover {
   font-size: 6em;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+/* timer buttons */
 
 .buttons ul {
   display: flex;
@@ -99,41 +108,7 @@ ul {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-input {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 16px 8px;
-  font-size: 22px;
-  text-align: center;
-}
-
-input:focus::placeholder {
-  color: transparent;
-}
-
-input:focus {
-  outline: none;
-}
-
-.submit-input input {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  text-align: center;
-  font-size: 20px;
-  margin-top: 15px;
-  padding: 15px 25px;
-  cursor: pointer;
-  transition: background-color, 0.5s;
-}
-
-.submit-input input:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-}
+/* reports */
 
 .reports {
   display: flex;
@@ -158,9 +133,46 @@ tr {
 
 th, td {
   display: block;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 0.5px solid black;
   text-align: left;
   font-size: larger;
   padding: 15px 0px 15px 10px;
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* submission */
+
+.submit {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.select-category {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-category h3 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.select-category button {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.list-of-categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-of-categories button {
+  width: 300px;
+  display: inline;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 18px;
+  margin: auto;
+  font-size: 18px;
+  text-align: center;
 }

@@ -4,6 +4,10 @@ const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, o
 
    var setOfButtons;
 
+   function openDropdown() {
+
+   }
+
    switch (timerState) {
       default:
       case 0:
@@ -28,12 +32,21 @@ const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, o
          break;
       case 3:
          setOfButtons = (
-            <form onSubmit={onSubmit}>
-               <input type="text" placeholder="Which category?" value={category} onChange={onChange} />
-               <div className="submit-input">
-                  <input type="submit" value="Submit" />
+            <div className='submit'>
+               <div className='select-category'>
+                  <h3>Select a category</h3>
+                  <div className='list-of-categories'>
+                     <button>Study</button>
+                     <button>Read</button>
+                     <button>Work</button>
+                     <button>Exercise</button>
+                     <button>Leisure</button>
+                  </div>
+                  <button onClick={onSubmit} className='submitbtn'>
+                     Submit
+                  </button>
                </div>
-            </form>)
+            </div>)
          break;
    }
 

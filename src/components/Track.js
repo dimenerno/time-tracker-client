@@ -14,6 +14,7 @@ const Track = () => {
     // 2: Paused
     // 3: Ready for submission
     const [timerState, setTimerState] = useState(0)
+    var timerHTML = (<div></div>)
 
     function updateTimer(t) {
         const hours = Math.floor(t / 3600);
@@ -86,12 +87,17 @@ const Track = () => {
         return () => { clearInterval(interval) }
     }, [isActive, time]);
 
+
+    if(timerState != 3) 
+        timerHTML = (                
+        <div className='time'>
+            <h1>{hours}:{minutes}:{seconds}</h1>
+        </div>)
+
     return (
         <div className='wrapper'>
             <div className='timer'>
-                <div className='time'>
-                    <h1>{hours}:{minutes}:{seconds}</h1>
-                </div>
+                {timerHTML}
                 <Buttons timerState={timerState} startTimer={startTimer} resetTimer={resetTimer} pauseTimer={pauseTimer} submitTime={submitTime} onChange={onChange} onSubmit={onSubmit} category={category}/>
             </div>
         </div>
