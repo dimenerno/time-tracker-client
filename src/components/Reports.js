@@ -6,12 +6,19 @@ import { Doughnut } from "react-chartjs-2";
 
 const Reports = () => {
     Chart.register([ArcElement, Tooltip]);
+
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+
     const [list_of_category, set_list_of_category] = useState([])
     const [list_of_duration, set_list_of_duration] = useState([])
     const [chartData, setchartData] = useState({
         labels: [],
         datasets: []
     })
+    const [displayDate, setDisplayDate] = useState(yyyy + '/' + mm + '/' + dd)
 
     useEffect(() => {
         fetch('http://localhost:9000')
@@ -38,14 +45,14 @@ const Reports = () => {
                             label: 'Time spent at each category',
                             data: dataset,
                             backgroundColor: [
-                                '#082d0f',
-                                '#5e807f',
-                                '#17B890',
-                                '#9DC5BB',
-                                '#DEE5E5'
+                                '#4B4237',
+                                '#D5A021',
+                                '#EDE7D9',
+                                '#A49694',
+                                '#736B60'
                             ],
                             borderWidth: 0.5,
-                            borderColor: 'rgba(0, 0, 0, 0.5'
+                            borderColor: 'black'
                         }
                     ]
                 })
@@ -59,7 +66,12 @@ const Reports = () => {
         <div className="wrapper">
             <div className="reports">
                 <div className="chart">
-                    <Doughnut data={chartData} />
+                    <h3>{displayDate}</h3>
+                </div>
+                <div className="chart">
+                    <div className="canvas">
+                        <Doughnut data={chartData} />
+                    </div>
                 </div>
                 <table>
                     <tbody>
