@@ -1,29 +1,28 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Buttons from './Buttons'
+import formatTime from '../helper/formatTime'
 
 const Track = () => {
+    // 0: Initial
+    // 1: Running
+    // 2: Paused
+    // 3: Ready for submission
+    const [timerState, setTimerState] = useState(0)
     const [time, setTime] = useState(0)
     const [seconds, setSeconds] = useState('00')
     const [minutes, setMinutes] = useState('00')
     const [hours, setHours] = useState('00')
     const [isActive, setIsActive] = useState(false)
     const [category, setCategory] = useState("")
-    // 0: Initial
-    // 1: Running
-    // 2: Paused
-    // 3: Ready for submission
-    const [timerState, setTimerState] = useState(0)
+    
     var timerHTML = (<div></div>)
 
     function updateTimer(t) {
-        const hours = Math.floor(t / 3600);
-        const minutes = Math.floor((t % 3600) / 60);
-        const seconds = (t % 3600) % 60;
-
-        setSeconds(String(seconds).length === 1 ? `0${seconds}`: seconds)
-        setMinutes(String(minutes).length === 1 ? `0${minutes}`: minutes)
-        setHours(String(hours).length === 1 ? `0${hours}`: hours)
+        const formatted_time = formatTime(t)
+        setSeconds(formatted_time.seconds)
+        setMinutes(formatted_time.minutes)
+        setHours(formatted_time.hours)
     }
 
     function startTimer() {
@@ -47,20 +46,12 @@ const Track = () => {
     }
   
     function onSubmit() {
-        const today = new Date();
-        const date = {
-            year: today.getFullYear(),
-            month: today.getMonth()+1,
-            day: today.getDate()
-        }
-
         fetch(`http://localhost:9000`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 category: category,
-                duration: time,
-                date: date
+                time: time,
             })
         }).then(res => {
             if(res.ok) alert("Succeded!")
@@ -83,7 +74,7 @@ const Track = () => {
         return () => { clearInterval(interval) }
     }, [isActive, time]);
 
-
+    // Hide timer during submission
     if(timerState !== 3) 
         timerHTML = (                
         <div className='time'>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import formatTime from '../helper/formatTime'
 
 const Reports = () => {
 
@@ -10,14 +11,16 @@ const Reports = () => {
         fetch('http://localhost:9000')
             .then(res => res.json())
             .then(data => {
-                const arr = data.record_arr
-                const len = arr.length
+                const report = data.report
                 var category_buffer = [(<th>Category</th>)]
                 var duration_buffer = [(<th>Duration</th>)]
-                for (let i = 0; i < len; i++) {
-                    category_buffer.push((<td key={i}>{arr[i].category}</td>))
-                    duration_buffer.push((<td key={i}>{arr[i].duration}</td>))
+
+                for(var key in report) {
+                    category_buffer.push((<td key={key}>{key}</td>))
+                    const formatted_time = formatTime(report[key])
+                    duration_buffer.push((<td key={key}>{formatted_time.hours}:{formatted_time.minutes}:{formatted_time.seconds}</td>))
                 }
+
                 set_list_of_category(category_buffer)
                 set_list_of_duration(duration_buffer)
             })
