@@ -14,6 +14,7 @@ const Reports = () => {
         labels: [],
         datasets: []
     })
+    const [dateDelta, setdateDelta] = useState(0)
     const [displayDate, setDisplayDate] = useState(todayDate)
 
     useEffect(() => {
@@ -58,13 +59,29 @@ const Reports = () => {
                 set_list_of_category(category_buffer)
                 set_list_of_duration(duration_buffer)
             })
-    }, [])
+    }, [displayDate])
+
+    function decrementDate() {
+        setdateDelta(dateDelta - 1)
+    }
+    function incrementDate() {
+        setdateDelta(dateDelta + 1)
+    }
+
+    useEffect(() => {
+        var tempDate = new Date()
+        tempDate.setDate(tempDate.getDate() + dateDelta)
+        const newDate = tempDate.toISOString().split('T')[0]
+        setDisplayDate(newDate)
+    }, [dateDelta])
 
     return (
         <div className="wrapper">
             <div className="reports">
                 <div className="chart">
+                    <button onClick={decrementDate}>&lt;</button>
                     <h3>{displayDate}</h3>
+                    <button onClick={incrementDate}>&gt;</button>
                 </div>
                 <div className="chart">
                     <div className="canvas">

@@ -55,6 +55,20 @@ nav li a:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color, 0.4s;
+  margin: 0
+}
+
+button.selected, button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 /* wrapper is used to align a single div element vertically */
 
 .wrapper {
@@ -87,22 +101,19 @@ nav li a:hover {
 
 .buttons ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  width: 450px;
+  margin: auto;
 }
 
 .buttons li {
   width: 100%;
+  text-align: center;
 }
 
 .buttons button {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  text-align: center;
-  font-size: 24px;
-  padding: 24px;
-  cursor: pointer;
-  transition: background-color, 0.5s;
+  width: 150px;
+  padding: 20px;
 }
 
 .buttons button:hover {
@@ -142,10 +153,16 @@ th, td {
 
 
 .chart {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.2);
   border: 0.5px solid black; 
+}
+
+.chart button {
+  width: 100px;
 }
 
 .chart h3 {
@@ -176,7 +193,7 @@ th, td {
 
 .select-category button {
   font-size: 20px;
-  margin-top: 10px;
+  margin: 20px auto 0 auto;
 }
 
 .list-of-categories {
