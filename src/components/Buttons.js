@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react';
 
 const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, setCategory, onSubmit, category }) => {
 

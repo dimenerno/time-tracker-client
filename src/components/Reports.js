@@ -7,35 +7,33 @@ import { Doughnut } from "react-chartjs-2";
 const Reports = () => {
     Chart.register([ArcElement, Tooltip]);
 
-    const today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-
+    const todayDate = (new Date()).toISOString().split('T')[0]
     const [list_of_category, set_list_of_category] = useState([])
     const [list_of_duration, set_list_of_duration] = useState([])
     const [chartData, setchartData] = useState({
         labels: [],
         datasets: []
     })
-    const [displayDate, setDisplayDate] = useState(yyyy + '/' + mm + '/' + dd)
+    const [displayDate, setDisplayDate] = useState(todayDate)
 
     useEffect(() => {
-        fetch('http://localhost:9000')
+        fetch(`http://localhost:9000?date=${displayDate}`)
             .then(res => res.json())
-            .then(data => {
-                var category_buffer = [(<th>Category</th>)]
-                var duration_buffer = [(<th>Duration</th>)]
+            .then(categories => {
+                var category_buffer = []
+                var duration_buffer = []
                 var labels = []
                 var dataset = []
 
-                for (var key in data) {
-                    labels.push(key)
-                    dataset.push(data[key])
-                    category_buffer.push((<td key={key}>{key}</td>))
+                for (var category in categories) {
+                    if(categories[category] !== '0') {
+                        labels.push(category)
+                        dataset.push(categories[category])
+                        category_buffer.push((<td key={category}>{category}</td>))
 
-                    const formatted_time = formatTime(data[key])
-                    duration_buffer.push((<td key={key}>{formatted_time.hours}:{formatted_time.minutes}:{formatted_time.seconds}</td>))
+                        const formatted_time = formatTime(categories[category])
+                        duration_buffer.push((<td key={category}>{formatted_time.hours}:{formatted_time.minutes}:{formatted_time.seconds}</td>))
+                    }
                 }
 
                 setchartData({
@@ -45,13 +43,13 @@ const Reports = () => {
                             label: 'Time spent at each category',
                             data: dataset,
                             backgroundColor: [
-                                '#4B4237',
-                                '#D5A021',
-                                '#EDE7D9',
-                                '#A49694',
-                                '#736B60'
+                                'rgba(75, 66, 55, 0.9)',
+                                'rgba(213, 160, 33, 0.9)',
+                                'rgba(237, 231, 217, 0.9)',
+                                'rgba(164, 150, 148, 0.9)',
+                                'rgba(115, 107, 96, 0.9)'
                             ],
-                            borderWidth: 0.5,
+                            borderWidth: 0.3,
                             borderColor: 'black'
                         }
                     ]
