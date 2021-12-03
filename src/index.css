@@ -22,12 +22,6 @@ ul {
   padding: 0;
 }
 
-p {
-  margin: 0;
-  font-size: 22px;
-  font-weight: bold;
-}
-
 
 #root {
   height: 100%;
@@ -157,6 +151,7 @@ th, td {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+
 .chart {
   display: flex;
   justify-content: space-between;
@@ -167,12 +162,7 @@ th, td {
 }
 
 .chart button {
-  width: 100%;
-  height: 60px;
-}
-
-button.date {
-  min-width: 300px;
+  width: 100px;
 }
 
 .chart h3 {
