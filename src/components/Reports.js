@@ -80,7 +80,7 @@ const Reports = () => {
             <div className="reports">
                 <div className="chart">
                     <button onClick={decrementDate}>&lt;</button>
-                    <h3>{displayDate}</h3>
+                    <button className="date"><p>{displayDate}</p></button>
                     <button onClick={incrementDate}>&gt;</button>
                 </div>
                 <div className="chart">
