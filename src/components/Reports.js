@@ -1,6 +1,7 @@
 import React from 'react'
 import ReportsDay from './ReportsDay'
 import ReportsMonth from './ReportsMonth'
+import ReportsYear from './ReportsYear'
 
 const Reports = ({viewBy}) => {
    switch(viewBy) {
@@ -19,7 +20,7 @@ const Reports = ({viewBy}) => {
       case 'Year':
          return (
             <div className="wrapper">
-               <ReportsDay />
+               <ReportsYear />
             </div>
          )
    }
