@@ -3,9 +3,7 @@ import '../css/settings.css'
 import { useState } from 'react'
 import Dropdown from './Dropdown'
 
-const Settings = () => {
-
-    const [viewBy, setviewBy] = useState('Day')
+const Settings = ({viewBy, setviewBy}) => {
     const [showViewBy, setshowViewBy] = useState(false)
 
     return (

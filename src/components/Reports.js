@@ -5,7 +5,7 @@ import formatTime from '../helper/formatTime'
 import { Chart, ArcElement, Tooltip } from 'chart.js'
 import { Doughnut } from "react-chartjs-2";
 
-const Reports = () => {
+const Reports = ({viewBy}) => {
     Chart.register([ArcElement, Tooltip]);
 
     const todayDate = (new Date()).toISOString().split('T')[0]
