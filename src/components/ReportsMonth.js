@@ -22,7 +22,7 @@ const ReportsMonth = ({ viewBy }) => {
            "July", "August", "September", "October", "November", "December" ];
 
     useEffect(() => {
-        fetch(`http://localhost:9000?month=${displayMonth}&year=${displayYear}`)
+        fetch(`http://ssal.sparcs.org:30005?month=${displayMonth}&year=${displayYear}`)
             .then(res => res.json())
             .then(categories => {
                 var category_buffer = []

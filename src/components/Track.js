@@ -47,7 +47,7 @@ const Track = () => {
     }
   
     function onSubmit() {
-        fetch(`http://localhost:9000`, {
+        fetch(`http://ssal.sparcs.org:30005`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

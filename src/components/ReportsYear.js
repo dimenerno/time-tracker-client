@@ -19,7 +19,7 @@ const ReportsYear = ({ viewBy }) => {
     const [dateDelta, setdateDelta] = useState(0)
 
     useEffect(() => {
-        fetch(`http://localhost:9000?year=${displayYear}`)
+        fetch(`http://ssal.sparcs.org:30005?year=${displayYear}`)
             .then(res => res.json())
             .then(categories => {
                 var category_buffer = []
