@@ -1,0 +1,85 @@
+.timer {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin: auto;
+   min-width: 500px;
+   height: 50%;
+}
+
+.timer h1 {
+   position: relative;
+   margin: 0 auto;
+   bottom: 40px;
+   text-align: center;
+   font-size: 6em;
+}
+
+.buttons {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+
+button.timer-btn {
+   background-color: rgba(0, 0, 0, 0);
+   font-size: 24px;
+   width: 150px;
+   padding: 20px 0px;
+}
+
+button.timer-btn:hover {
+   background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* submission */
+
+.submit {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+button.submit-btn {
+   background-color: rgba(0, 0, 0, 0);
+   font-size: 20px;
+   width: 150px;
+   padding: 15px 0px;
+   margin: 15px auto 0 auto;
+}
+
+button.submit-btn:hover {
+   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.select-category {
+   display: flex;
+   flex-direction: column;
+}
+
+.select-category h3 {
+   text-align: center;
+   margin-bottom: 30px;
+}
+
+.list-of-categories {
+   display: flex;
+   flex-direction: column;
+}
+
+.list-of-categories button {
+   width: 300px;
+   display: inline;
+   background-color: rgba(0, 0, 0, 0.3);
+   padding: 18px;
+   margin: auto;
+   font-size: 18px;
+   text-align: center;
+}
+
+.list-of-categories button:hover {
+   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.list-of-categories button.selected {
+   background-color: rgba(0, 0, 0, 0.6);
+}

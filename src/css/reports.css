@@ -1,0 +1,56 @@
+.reports {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   max-width: 500px;
+   margin: auto;
+}
+
+table.reports-table {
+   table-layout: fixed;
+   width: 100%;
+   margin: auto;
+   border-spacing: 0px;
+   border-collapse: collapse;
+}
+
+.reports-table tr {
+   display: table-cell;
+}
+
+.reports-table th, .reports-table td {
+   display: block;
+   border: 0.5px solid black;
+   text-align: center;
+   font-size: larger;
+   padding: 15px 0px 15px 0px;
+   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.chart {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   margin: auto;
+   background-color: rgba(0, 0, 0, 0.2);
+   border: 0.5px solid black;
+}
+
+.chart button {
+   width: 100px;
+   font-size: 18px;
+   background-color: rgba(0, 0, 0, 0);
+}
+
+.chart button:hover {
+   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.chart h3 {
+   text-align: center;
+}
+
+.canvas {
+   width: 60%;
+   margin: 40px auto 40px auto;
+}

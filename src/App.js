@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import './index.css'
+import './css/app.css'
 import Navbar from './components/Navbar'
-import About from './components/About'
+import Settings from './components/Settings'
 import Track from './components/Track'
 import Reports from './components/Reports'
 
@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/about' element={<About />}/>
+        <Route path='/settings' element={<Settings />}/>
         <Route path='/' element={<Track />} />
         <Route path='/reports' element={<Reports />} />
       </Routes>

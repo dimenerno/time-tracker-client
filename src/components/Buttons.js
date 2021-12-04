@@ -12,23 +12,26 @@ const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, s
       default:
       case 0:
          setOfButtons = (
-            <ul>
-               <li><button onClick={startTimer}>Start</button></li>
-            </ul>)
+            <div className='buttons'>
+               <button className="timer-btn" onClick={startTimer}>Start</button>
+            </div>
+            )
          break;
       case 1:
          setOfButtons = (
-            <ul>
-               <li><button onClick={pauseTimer}>Pause</button></li>
-            </ul>)
+            <div className='buttons'>
+               <button className="timer-btn" onClick={pauseTimer}>Pause</button>
+            </div>
+            )
          break;
       case 2:
          setOfButtons = (
-            <ul>
-               <li><button onClick={startTimer}>Resume</button></li>
-               <li><button onClick={resetTimer}>Reset</button></li>
-               <li><button onClick={submitTime}>Submit</button></li>
-            </ul>)
+            <div className='buttons'>
+               <button className="timer-btn" onClick={startTimer}>Resume</button>
+               <button className="timer-btn" onClick={resetTimer}>Reset</button>
+               <button className="timer-btn" onClick={submitTime}>Submit</button>
+            </div>
+            )
          break;
       case 3:
          setOfButtons = (
@@ -40,7 +43,7 @@ const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, s
                         <button className={key === category ? 'selected' : ''} onClick={buttonSelected(key)}>{key}</button>
                      )}
                   </div>
-                  <button onClick={onSubmit} className='submitbtn'>
+                  <button onClick={onSubmit} className='submit-btn'>
                      Submit
                   </button>
                </div>
@@ -49,7 +52,7 @@ const Buttons = ({ timerState, startTimer, resetTimer, pauseTimer, submitTime, s
    }
 
    return (
-      <div className='buttons'>
+      <div>
          {setOfButtons}
       </div>
    )

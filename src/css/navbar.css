@@ -1,0 +1,22 @@
+nav {
+   display: flex;
+   justify-content: space-around;
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   background-color: rgba(0, 0, 0, 0.4);
+}
+
+nav a {
+   width: 100%;
+   text-align: center;
+   font-size: 18px;
+   font-weight: 500;
+   padding: 15px 0 15px 0;
+   text-decoration: none;
+   transition: background-color, 0.4s;
+}
+
+nav a:hover {
+   background-color:rgba(0, 0, 0, 0.6)
+}

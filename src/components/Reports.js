@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/reports.css'
 import { useState, useEffect } from 'react'
 import formatTime from '../helper/formatTime'
 import { Chart, ArcElement, Tooltip } from 'chart.js'
@@ -88,7 +89,7 @@ const Reports = () => {
                         <Doughnut data={chartData} />
                     </div>
                 </div>
-                <table>
+                <table className="reports-table">
                     <tbody>
                         <tr>{list_of_category}</tr>
                         <tr>{list_of_duration}</tr>

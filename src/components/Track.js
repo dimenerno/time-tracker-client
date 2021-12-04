@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import '../css/track.css'
 import Buttons from './Buttons'
 import formatTime from '../helper/formatTime'
 
