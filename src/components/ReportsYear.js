@@ -10,6 +10,7 @@ const ReportsYear = ({ viewBy }) => {
 
     const todayDate = new Date()
     const [displayYear, setdisplayYear] = useState(todayDate.getFullYear())
+    const [isEmpty, setisEmpty] = useState(true)
     const [list_of_category, set_list_of_category] = useState([])
     const [list_of_duration, set_list_of_duration] = useState([])
     const [chartData, setchartData] = useState({
@@ -26,12 +27,13 @@ const ReportsYear = ({ viewBy }) => {
                 var duration_buffer = []
                 var labels = []
                 var dataset = []
-
+                setisEmpty(true)
                 for (var category in categories) {
                     if (categories[category] !== '0') {
                         labels.push(category)
                         dataset.push(categories[category])
                         category_buffer.push((<td key={category}>{category}</td>))
+                        setisEmpty(false)
 
                         const formatted_time = formatTime(categories[category])
                         duration_buffer.push((<td key={category}>{formatted_time.hours}:{formatted_time.minutes}:{formatted_time.seconds}</td>))
@@ -82,9 +84,10 @@ const ReportsYear = ({ viewBy }) => {
                 <button onClick={incrementDate}>&gt;</button>
             </div>
             <div className="chart">
-                <div className="canvas">
+                {!isEmpty && (<div className="canvas">
                     <Doughnut data={chartData} />
-                </div>
+                </div>)}
+                {isEmpty && (<div className="canvas"><h3 style={{ margin: 'auto' }}>No data.<br />Track your time now!</h3></div>)}
             </div>
             <table className="reports-table">
                 <tbody>
