@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import formatTime from '../helper/formatTime'
 import { Chart, ArcElement, Tooltip } from 'chart.js'
 import { Doughnut } from "react-chartjs-2";
+import Fade from 'react-reveal/Fade'
 
 const ReportsDay = ({ viewBy }) => {
     Chart.register([ArcElement, Tooltip]);
@@ -24,9 +25,9 @@ const ReportsDay = ({ viewBy }) => {
         labels: [],
         datasets: []
     })
-    
+
     useEffect(() => {
-        fetch(`http://${url2}?day=${displayDay}&month=${displayMonth}&year=${displayYear}`)
+        fetch(`http://${url1}?day=${displayDay}&month=${displayMonth}&year=${displayYear}`)
             .then(res => res.json())
             .then(categories => {
                 var category_buffer = []
@@ -87,25 +88,28 @@ const ReportsDay = ({ viewBy }) => {
     }, [dateDelta])
 
     return (
-        <div className="reports">
-            <div className="chart">
-                <button onClick={decrementDate}>&lt;</button>
-                <h3>{displayYear}-{displayMonth}-{displayDay}</h3>
-                <button onClick={incrementDate}>&gt;</button>
+        <Fade>
+            <div className="reports">
+                <div className="chart">
+                    <button onClick={decrementDate}>&lt;</button>
+                    <h3>{displayYear}-{displayMonth}-{displayDay}</h3>
+                    <button onClick={incrementDate}>&gt;</button>
+                </div>
+                <div className="chart">
+                    {!isEmpty && (<div className="canvas">
+                        <Doughnut data={chartData} />
+                    </div>)}
+                    {isEmpty && (<div className="canvas"><h3 style={{ margin: 'auto' }}>No data.<br />Track your time now!</h3></div>)}
+                </div>
+                <table className="reports-table">
+                    <tbody>
+                        <tr>{list_of_category}</tr>
+                        <tr>{list_of_duration}</tr>
+                    </tbody>
+                </table>
+                
             </div>
-            <div className="chart">
-                { !isEmpty && (<div className="canvas">
-                    <Doughnut data={chartData} />
-                </div>) }
-                { isEmpty && (<div className="canvas"><h3 style={{margin: 'auto'}}>No data.<br/>Track your time now!</h3></div>) }
-            </div>
-            <table className="reports-table">
-                <tbody>
-                    <tr>{list_of_category}</tr>
-                    <tr>{list_of_duration}</tr>
-                </tbody>
-            </table>
-        </div>
+        </Fade>
     )
 }
 

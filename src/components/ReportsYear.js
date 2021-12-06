@@ -23,7 +23,7 @@ const ReportsYear = ({ viewBy }) => {
     const [dateDelta, setdateDelta] = useState(0)
 
     useEffect(() => {
-        fetch(`http://${url2}:30005?year=${displayYear}`)
+        fetch(`http://${url1}:30005?year=${displayYear}`)
             .then(res => res.json())
             .then(categories => {
                 var category_buffer = []

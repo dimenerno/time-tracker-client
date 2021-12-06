@@ -26,7 +26,7 @@ const ReportsMonth = ({ viewBy }) => {
         "July", "August", "September", "October", "November", "December"];
 
     useEffect(() => {
-        fetch(`http://${url2}?month=${displayMonth}&year=${displayYear}`)
+        fetch(`http://${url1}?month=${displayMonth}&year=${displayYear}`)
             .then(res => res.json())
             .then(categories => {
                 var category_buffer = []

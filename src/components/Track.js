@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import '../css/track.css'
 import Buttons from './Buttons'
 import formatTime from '../helper/formatTime'
+import Fade from 'react-reveal/Fade'
 
 const Track = () => {
     // 0: Initial
@@ -20,7 +21,7 @@ const Track = () => {
     const [hours, setHours] = useState('00')
     const [isActive, setIsActive] = useState(false)
     const [category, setCategory] = useState("")
-    
+
     var timerHTML = (<div></div>)
 
     function updateTimer(t) {
@@ -49,17 +50,17 @@ const Track = () => {
         setTimerState(3)
         setCategory("")
     }
-  
+
     function onSubmit() {
-        fetch(`http://${url2}`, {
+        fetch(`http://${url1}`, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 category: category,
                 time: time,
             })
         }).then(res => {
-            if(res.ok) alert("Succeded!")
+            if (res.ok) alert("Succeded!")
             else alert("Error!")
         })
         setTime(0)
@@ -68,7 +69,7 @@ const Track = () => {
 
     useEffect(() => {
         let interval;
-        if(isActive) {
+        if (isActive) {
             interval = setInterval(() => {
                 updateTimer(time);
                 setTime(time + 1);
@@ -80,20 +81,21 @@ const Track = () => {
     }, [isActive, time]);
 
     // Hide timer during submission
-    if(timerState !== 3) 
-        timerHTML = (                
-        <div className='time'>
-            <h1>{hours}:{minutes}:{seconds}</h1>
-        </div>)
+    if (timerState !== 3)
+        timerHTML = (
+            <div className='time'>
+                <h1>{hours}:{minutes}:{seconds}</h1>
+            </div>)
 
     return (
-        <div className='wrapper'>
-            <div className='timer'>
-                {timerHTML}
-                <Buttons timerState={timerState} startTimer={startTimer} resetTimer={resetTimer} pauseTimer={pauseTimer} submitTime={submitTime} setCategory={setCategory} onSubmit={onSubmit} category={category}/>
+        <Fade>
+            <div className='wrapper'>
+                <div className='timer'>
+                    {timerHTML}
+                    <Buttons timerState={timerState} startTimer={startTimer} resetTimer={resetTimer} pauseTimer={pauseTimer} submitTime={submitTime} setCategory={setCategory} onSubmit={onSubmit} category={category} />
+                </div>
             </div>
-        </div>
-
+        </Fade>
     )
 }
 
