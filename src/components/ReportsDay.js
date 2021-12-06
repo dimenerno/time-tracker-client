@@ -8,6 +8,9 @@ import { Doughnut } from "react-chartjs-2";
 const ReportsDay = ({ viewBy }) => {
     Chart.register([ArcElement, Tooltip]);
 
+    const url1 = 'ssal.sparcs.org:30005'
+    const url2 = 'localhost:9000'
+
     const todayDate = new Date()
     const [displayDay, setdisplayDay] = useState(todayDate.getDate())
     const [displayMonth, setdisplayMonth] = useState(todayDate.getMonth() + 1)
@@ -23,7 +26,7 @@ const ReportsDay = ({ viewBy }) => {
     })
     
     useEffect(() => {
-        fetch(`http://ssal.sparcs.org:30005?day=${displayDay}&month=${displayMonth}&year=${displayYear}`)
+        fetch(`http://${url2}?day=${displayDay}&month=${displayMonth}&year=${displayYear}`)
             .then(res => res.json())
             .then(categories => {
                 var category_buffer = []

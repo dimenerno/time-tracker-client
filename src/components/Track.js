@@ -9,6 +9,10 @@ const Track = () => {
     // 1: Running
     // 2: Paused
     // 3: Ready for submission
+
+    const url1 = 'ssal.sparcs.org:30005'
+    const url2 = 'localhost:9000'
+
     const [timerState, setTimerState] = useState(0)
     const [time, setTime] = useState(0)
     const [seconds, setSeconds] = useState('00')
@@ -47,7 +51,7 @@ const Track = () => {
     }
   
     function onSubmit() {
-        fetch(`http://ssal.sparcs.org:30005`, {
+        fetch(`http://${url2}`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
